@@ -14,7 +14,7 @@ describe("App is Running tests", function () {
     it("GET / should return working", async function () {
         let { status, body } = await request.get("/status");
 
-        expect(body.message).toBe("RUNNING");
+        expect(body).toMatchObject({ message: "RUNNING" });
         expect(status).toBe(200);
     });
 
