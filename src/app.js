@@ -1,5 +1,3 @@
-require("./config/db-connection");
-
 const express = require("express");
 const { todosRoutes } = require("./routes/todos");
 const { responseFormatter } = require("./utils/formatter");
