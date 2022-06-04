@@ -8,6 +8,10 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/status", (req, res) => {
+    return res.send("RUNNING");
+});
+
 module.exports = {
     app,
 };
