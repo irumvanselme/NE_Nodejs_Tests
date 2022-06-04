@@ -1,4 +1,4 @@
-const { add } = require("../../utils/adder.js");
+const { add } = require("../../src/utils/adder.js");
 
 describe("Adder Function Tests", function () {
     it("should return 3 with 1 and 2", function () {
