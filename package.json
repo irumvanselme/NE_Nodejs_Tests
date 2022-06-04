@@ -1,9 +1,16 @@
 {
-  "name": "js-testing",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.18.1"
-  }
+    "name": "js-testing",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "test": "jest"
+    },
+    "dependencies": {
+        "express": "^4.18.1"
+    },
+    "devDependencies": {
+        "@types/jest": "^28.1.0",
+        "jest": "^28.1.0"
+    }
 }
