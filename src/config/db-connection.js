@@ -5,10 +5,10 @@ require("mongoose")
         useNewUrlParser: true,
     })
     .then(() => {
-        logger("Connected to database");
+        // logger("Connected to database");
     })
     .catch((e) => {
-        logger("Failed to connect to the database" + e.message);
+        // logger("Failed to connect to the database" + e.message);
     });
 
 require("../models/todo");

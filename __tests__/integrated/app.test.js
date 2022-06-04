@@ -1,26 +1,25 @@
-const supertest = require("supertest");
 const { serverURL } = require("../../src/utils/test-utils/server-url");
 
-const request = supertest.agent(serverURL);
+const { request } = require("undici");
 
 describe("App is Running tests", function () {
     it("GET / should return Active", async function () {
-        let res = await request.get("/");
+        let res = await request(serverURL);
 
-        expect(res.status).toBe(200);
-        expect(res.body.message).toBe("ACTIVE");
+        expect(res.statusCode).toBe(200);
+        expect(await res.body.json()).toMatchObject({ message: "ACTIVE" });
     });
 
     it("GET / should return working", async function () {
-        let { status, body } = await request.get("/status");
+        let { statusCode, body } = await request(serverURL + "/status");
 
-        expect(body).toMatchObject({ message: "RUNNING" });
-        expect(status).toBe(200);
+        expect(await body.json()).toMatchObject({ message: "RUNNING" });
+        expect(statusCode).toBe(200);
     });
 
     it("GET /not-found should return 404", async function () {
-        let { status } = await request.get("/not-found");
+        let { statusCode } = await request(serverURL + "/not-found");
 
-        expect(status).toBe(404);
+        expect(statusCode).toBe(404);
     });
 });

@@ -1,4 +1,5 @@
-let Todo = require("mongoose").model("Todo");
+const { Todo } = require("../models/todo");
+const { responseFormatter } = require("../utils/formatter");
 
 class TodoService {
     async getAllTodos(req, res) {
@@ -15,7 +16,18 @@ class TodoService {
     }
 
     async findById(req, res) {
-        return res.send(await Todo.findById(req.params.id));
+        let todo = await Todo.findById(req.params.id);
+
+        if (!todo)
+            return res
+                .status(404)
+                .send(
+                    responseFormatter(
+                        "Todo with id [" + req.params.id + "] Not found"
+                    )
+                );
+
+        return res.send(todo);
     }
 
     async delete(req, res) {

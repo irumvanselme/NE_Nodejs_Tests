@@ -8,6 +8,7 @@ const createTestServer = () => {
     });
 
     afterAll(() => {
+        require("mongoose").connection.close();
         server.close();
     });
 
